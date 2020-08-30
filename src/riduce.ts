@@ -78,7 +78,7 @@ export function riduceRedux<
 >(
   initialState: TreeT,
   riducerDict: RiducerDictT = {} as RiducerDictT
-): RiduceReact<TreeT, RiducerDictT> {
+): RiduceRedux<TreeT, RiducerDictT> {
   const reducer = makeReducer(initialState, riducerDict)
 
   const actions = createActionsProxy(initialState, initialState, riducerDict)
@@ -86,7 +86,7 @@ export function riduceRedux<
   return [reducer as ReduxReducer<TreeT, Action>, actions]
 }
 
-riduce.react = riduceReact
-riduce.redux = riduceRedux
+// riduce.react = riduceReact
+// riduce.redux = riduceRedux
 
 export default riduce
