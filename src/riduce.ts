@@ -6,13 +6,23 @@ import { Action, RiducerDict, isBundledAction } from './types';
 import updateState, { getState } from './utils/update-state';
 import leafReducer from './leafReducer';
 
+type Reducer<S, A extends Action> = ReactReducer<S, A> & ReduxReducer<S, A>
+
+export type Riduce<
+  TreeT,
+  RiducerDictT extends RiducerDict<TreeT> = {},
+> = [
+  Reducer<TreeT, Action>,
+  ActionsProxy<TreeT, TreeT, RiducerDictT>
+]
+
 export type RiduceRedux<
   TreeT,
   RiducerDictT extends RiducerDict<TreeT> = {},
-  > = [
-    ReduxReducer<TreeT, Action>,
-    ActionsProxy<TreeT, TreeT, RiducerDictT>
-  ]
+> = [
+  ReduxReducer<TreeT, Action>,
+  ActionsProxy<TreeT, TreeT, RiducerDictT>
+]
 
 export type RiduceReact<
   TreeT,
@@ -50,7 +60,7 @@ export function riduce<
 >(
   initialState: TreeT,
   riducerDict: RiducerDictT = {} as RiducerDictT
-): RiduceReact<TreeT, RiducerDictT> {
+): Riduce<TreeT, RiducerDictT> {
   const reducer = makeReducer(initialState, riducerDict)
 
   const actions = createActionsProxy(initialState, initialState, riducerDict)
