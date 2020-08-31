@@ -224,13 +224,13 @@ describe('Advanced usage', () => {
     dispatch(doubleCounter)
     expect(getState().counter).toBe(10)
 
-    const storeCountThenIncrement = bundle([
+    const storeCountThenDouble = bundle([
       actions.nums.create.do((leafState, treeState) => [...leafState, treeState.counter]),
-      actions.counter.create.increment()
-    ], 'STORED_AND_INCREMENTED')
+      doubleCounter
+    ], 'STORED_AND_DOUBLED')
 
-    expect(storeCountThenIncrement.type).toBe('STORED_AND_INCREMENTED') // => 'STORED AND INCREMENTED'
-    dispatch(storeCountThenIncrement)
-    expect(getState()).toStrictEqual({ counter: 11, nums: [4, 10] })
+    expect(storeCountThenDouble.type).toBe('STORED_AND_DOUBLED') // => 'STORED AND DOUBLED'
+    dispatch(storeCountThenDouble)
+    expect(getState()).toStrictEqual({ counter: 20, nums: [4, 10] })
   })
 })

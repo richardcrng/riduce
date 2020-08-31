@@ -4,7 +4,7 @@
 
 *Zero hassle state management that's typed, flexible and scalable.*
 
-You've seen how Riduce provides [zero hassle setup, scalable state management and typesafe action creators](../README.md).
+You've seen how even basic usage of Riduce provides [zero hassle setup, scalable state management and typesafe action creators](../README.md).
 
 There's *even more* that you can do with Riduce:
 1. [Bundle multiple actions](#bundle-multiple-actions) into a single dispatch;
@@ -304,14 +304,14 @@ doubleCounter.type // => 'DOUBLED_COUNTER'
 dispatch(doubleCounter)
 getState().counter // => 10
 
-const storeCountThenIncrement = bundle([
+const storeCountThenDouble = bundle([
   actions.nums.create.do((leafState, treeState) => [...leafState, treeState.counter]),
-  actions.counter.create.increment()
-], 'STORED_AND_INCREMENTED')
+  doubleCounter // bundle accepts any Riduce actions
+], 'STORED_AND_DOUBLED')
 
-storeCountThenIncrement.type // => 'STORED AND INCREMENTED'
-dispatch(storeCountThenIncrement)
-getState() // => { counter: 11, nums: [4, 10] }
+storeCountThenDouble.type // => 'STORED AND DOUBLED'
+dispatch(storeCountThenDouble)
+getState() // => { counter: 20, nums: [4, 10] }
 
 ```
 
@@ -319,6 +319,8 @@ getState() // => { counter: 11, nums: [4, 10] }
 You may wish to check out the following:
 - [Riduce with `useReducer`: CodeSandbox demo](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t)
 - [Riduce with Redux: Repl.it demo](https://repl.it/@richardcrng/Riduce-with-Redux)
+
+The basic usage of riduce is documented
 
 Have fun adding it to your project!
 
