@@ -10,7 +10,7 @@ There's *even more* that you can do with Riduce:
 1. [Bundle multiple actions](#bundle-multiple-actions) into a single dispatch;
 2. [Execute arbitrary reducer logic](#execute-arbitrary-reducer-logic) for extendability;
 3. [Add custom reducers](#add-custom-reducers) for reusability; and
-4. [Control action type](#control-action-type) for debugging (e.g. Redux DevTools).
+4. [Control action types](#control-action-types) for debugging (e.g. Redux DevTools).
 
 ## Bundle multiple actions
 ```ts
@@ -273,7 +273,7 @@ getState().visitor.guestbook
 */
 ```
 
-### Control action types
+## Control action types
 Any time you are calling `create`, you can pass an optional string argument to it. This will be the `type` of any resulting action that gets created. (The `riduce` reducer will still deal with it in the same way.)
 
 If you are using `bundle`, you can pass a second argument of a string to control the type instead.
