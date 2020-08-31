@@ -1,7 +1,7 @@
 {
   "name": "riduce",
-  "version": "0.0.3",
-  "description": "Get rid of your reducer boilerplate! Typesafe reducers, arbitrary actions, zero hassle.",
+  "version": "0.0.4",
+  "description": "Get rid of your reducer boilerplate! Zero hassle state management that's typed, flexible and scalable.",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
