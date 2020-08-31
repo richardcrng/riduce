@@ -6,7 +6,9 @@ import { Action, RiducerDict, isBundledAction } from './types';
 import updateState, { getState } from './utils/update-state';
 import leafReducer from './leafReducer';
 
-type Reducer<S, A extends Action> = ReactReducer<S, A> & ReduxReducer<S, A>
+export type Reducer<TreeT, ActionT extends Action> = (treeState: TreeT | undefined, action: ActionT) => TreeT
+
+// type CommonReducer<S, A extends Action> = ReactReducer<S, A> & ReduxReducer<S, A>
 
 export type Riduce<
   TreeT,
@@ -16,26 +18,26 @@ export type Riduce<
   ActionsProxy<TreeT, TreeT, RiducerDictT>
 ]
 
-export type RiduceRedux<
-  TreeT,
-  RiducerDictT extends RiducerDict<TreeT> = {},
-> = [
-  ReduxReducer<TreeT, Action>,
-  ActionsProxy<TreeT, TreeT, RiducerDictT>
-]
+// export type RiduceRedux<
+//   TreeT,
+//   RiducerDictT extends RiducerDict<TreeT> = {},
+// > = [
+//   ReduxReducer<TreeT, Action>,
+//   ActionsProxy<TreeT, TreeT, RiducerDictT>
+// ]
 
-export type RiduceReact<
-  TreeT,
-  RiducerDictT extends RiducerDict<TreeT> = {},
-> = [
-  ReactReducer<TreeT, Action>,
-  ActionsProxy<TreeT, TreeT, RiducerDictT>
-]
+// export type RiduceReact<
+//   TreeT,
+//   RiducerDictT extends RiducerDict<TreeT> = {},
+// > = [
+//   ReactReducer<TreeT, Action>,
+//   ActionsProxy<TreeT, TreeT, RiducerDictT>
+// ]
 
 function makeReducer<
   TreeT,
   RiducerDictT extends RiducerDict<TreeT> = {}
->(initialState: TreeT, riducerDict: RiducerDictT) {
+>(initialState: TreeT, riducerDict: RiducerDictT): Reducer<TreeT, Action> {
   const reducer = (treeState: TreeT = initialState, action: Action): TreeT => {
 
     if (!action.leaf) return treeState
@@ -68,33 +70,25 @@ export function riduce<
   return [reducer, actions]
 }
 
-export function riduceReact<
-  TreeT,
-  RiducerDictT extends RiducerDict<TreeT> = {}
->(
-  initialState: TreeT,
-  riducerDict: RiducerDictT = {} as RiducerDictT
-): RiduceReact<TreeT, RiducerDictT> {
-  const reducer = makeReducer(initialState, riducerDict)
+// export function riduceReact<
+//   TreeT,
+//   RiducerDictT extends RiducerDict<TreeT> = {}
+// >(
+//   initialState: TreeT,
+//   riducerDict: RiducerDictT = {} as RiducerDictT
+// ): RiduceReact<TreeT, RiducerDictT> {
+//   return riduce(initialState, riducerDict)
+// }
 
-  const actions = createActionsProxy(initialState, initialState, riducerDict)
-
-  return [reducer as ReactReducer<TreeT, Action>, actions]
-}
-
-export function riduceRedux<
-  TreeT,
-  RiducerDictT extends RiducerDict<TreeT> = {}
->(
-  initialState: TreeT,
-  riducerDict: RiducerDictT = {} as RiducerDictT
-): RiduceRedux<TreeT, RiducerDictT> {
-  const reducer = makeReducer(initialState, riducerDict)
-
-  const actions = createActionsProxy(initialState, initialState, riducerDict)
-
-  return [reducer as ReduxReducer<TreeT, Action>, actions]
-}
+// export function riduceRedux<
+//   TreeT,
+//   RiducerDictT extends RiducerDict<TreeT> = {}
+// >(
+//   initialState: TreeT,
+//   riducerDict: RiducerDictT = {} as RiducerDictT
+// ): RiduceRedux<TreeT, RiducerDictT> {
+//   return riduce(initialState, riducerDict) as RiduceRedux<TreeT, RiducerDictT>
+// }
 
 // riduce.react = riduceReact
 // riduce.redux = riduceRedux
