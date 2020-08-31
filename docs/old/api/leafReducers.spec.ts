@@ -249,6 +249,7 @@ describe("Object longhand", () => {
       }
 
       describe("WHEN we initialise riduce with empty state and identity in the dictionary", () => {
+        // @ts-ignore
         const [reducer, actions] = riduce({}, { identity })
         let store: Store
         beforeEach(() => {
