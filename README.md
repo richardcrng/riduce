@@ -9,7 +9,6 @@ npm install riduce
 ```
 
 ![Travis (.org)](https://img.shields.io/travis/richardcrng/riduce.svg)
-[![Coverage Status](https://coveralls.io/repos/github/richardcrng/riduce/badge.svg?branch=buttons)](https://coveralls.io/github/richardcrng/riduce?branch=buttons)
 [![bundle size](https://badgen.net/bundlephobia/min/riduce)](https://badgen.net/bundlephobia/min/riduce)
 [![npm version](https://badge.fury.io/js/riduce.svg)](https://badge.fury.io/js/riduce)
 
@@ -39,15 +38,12 @@ Let's see it in use!
 # Introductory Example
 For a `useReducer` example, [see this CodeSandbox](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t).
 
-[![Edit Riduce example - MadLibs for Developers](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t?fontsize=14&hidenavigation=1&theme=dark&view=preview)
+For a `redux` example, you can run this [Repl.it](https://repl.it/@richardcrng/Riduce-with-Redux).
 
-
-For a `redux` example, keep reading on for:
+Below, we'll walk through the Redux example, showing:
 1. [Zero hassle setup](#zero-hassle-setup) with 2 lines of code;
 2. [Scalable state management](#scalable-state-management) with arbitrary actions; and
 3. [Typesafe action creators](#typesafe-action-creators) to mirror your state's shape.
-
-You can also run this code in [Repl.it](https://repl.it/@richardcrng/Riduce-with-Redux).
 
 ## Zero hassle setup
 Let's imagine we're controlling the state for a museum.
@@ -137,11 +133,11 @@ actions.visitor.guestbook.create.push('10')
 
 # Get started
 You may wish to check out the following:
+- [Riduce: advanced usage](./docs/riduce-advanced.md)
 - [Riduce with `useReducer`: CodeSandbox demo](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t)
 - [Riduce with Redux: Repl.it demo](https://repl.it/@richardcrng/Riduce-with-Redux)
-- [Advanced example](./docs/riduce-advanced.md)
 
-The advanced example shows how you can also:
+Advanced Riduce usage includes:
 1. [Bundle multiple actions](./docs/riduce-advanced.md#bundle-multiple-actions) into a single dispatch;
 2. [Execute arbitrary reducer logic](./docs/riduce-advanced.md#execute-arbitrary-reducer-logic) for extendability;
 3. [Add custom reducers](./docs/riduce-advanced.md#add-custom-reducers) for reusability; and
