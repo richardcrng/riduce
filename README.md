@@ -133,11 +133,11 @@ actions.visitor.guestbook.create.push('10')
 
 # Get started
 You may wish to check out the following:
+- [Riduce: advanced usage](./docs/riduce-advanced.md)
 - [Riduce with `useReducer`: CodeSandbox demo](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t)
 - [Riduce with Redux: Repl.it demo](https://repl.it/@richardcrng/Riduce-with-Redux)
-- [Advanced example](./docs/riduce-advanced.md)
 
-The advanced example shows how you can also:
+Advanced Riduce usage includes:
 1. [Bundle multiple actions](./docs/riduce-advanced.md#bundle-multiple-actions) into a single dispatch;
 2. [Execute arbitrary reducer logic](./docs/riduce-advanced.md#execute-arbitrary-reducer-logic) for extendability;
 3. [Add custom reducers](./docs/riduce-advanced.md#add-custom-reducers) for reusability; and
