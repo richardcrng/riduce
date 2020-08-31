@@ -1,4 +1,26 @@
+import { useReducer } from 'react'
+import { createStore } from 'redux'
 import riduce, { Riducer, ActionWithPayload } from "."
+
+// @dts-jest:group Library consistency
+{
+  const initialState = {
+    name: 'Richard',
+    coder: true
+  }
+
+  const [reducer, actions] = riduce(initialState)
+  
+  function Empty() {
+    // @dts-jest:pass Works with useReducer
+    const [state, dispatch] = useReducer(reducer, initialState)
+
+    return null
+  }
+
+  // @dts-jest:pass Works with createStore
+  const store = createStore(reducer)
+}
 
 // @dts-jest:group Actions shape mirrors state
 {
