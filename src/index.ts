@@ -8,5 +8,6 @@ export default riduce
 
 export {
   bundle,
+  riduce,
   Reducer
 }
