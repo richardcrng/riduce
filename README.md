@@ -40,7 +40,9 @@ For a `useReducer` example, [see this CodeSandbox](https://codesandbox.io/s/ridu
 
 For a `redux` example, you can run this [Repl.it](https://repl.it/@richardcrng/Riduce-with-Redux).
 
-Below, we'll walk through the Redux example, showing:
+For more advanced usage of Riduce, see [this example](./docs/riduce-advanced.md).
+
+Below, we'll walk through the introductory Redux example, showing:
 1. [Zero hassle setup](#zero-hassle-setup) with 2 lines of code;
 2. [Scalable state management](#scalable-state-management) with arbitrary actions; and
 3. [Typesafe action creators](#typesafe-action-creators) to mirror your state's shape.
@@ -106,7 +108,7 @@ getState()
 ```
 All this is possible because Riduce's `actions` gives you **loads of convenient action creators out of the box**, which you can *use liberally throughout your state tree:* `update`, `set`, `filter`, `reset`, and many more...
 
-It's also possible to add your own in. *(TODO: add documentation for this.)*
+It's also possible to add your own in, as documented in [advanced Riduce usage](./docs/riduce-advanced.md).
 
 ## Typesafe action creators
 Now we've seen that Riduce is [zero-hassle setup](#zero-hassle-setup) for [arbitrary action creators without the reducer boilerplate](#scalable-state-management). 
@@ -141,7 +143,7 @@ Advanced Riduce usage includes:
 1. [Bundle multiple actions](./docs/riduce-advanced.md#bundle-multiple-actions) into a single dispatch;
 2. [Execute arbitrary reducer logic](./docs/riduce-advanced.md#execute-arbitrary-reducer-logic) for extendability;
 3. [Add custom reducers](./docs/riduce-advanced.md#add-custom-reducers) for reusability; and
-4. [Control action type](./docs/riduce-advanced.md#control-action-type) for debugging (e.g. Redux DevTools).
+4. [Control action types](./docs/riduce-advanced.md#control-action-types) for debugging (e.g. Redux DevTools).
 
 Have fun adding it to your project!
 
