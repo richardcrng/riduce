@@ -35,6 +35,10 @@ That's it! Now you've got a type-safe `reducer` and arbitrary `actions`, with ze
 
 Let's see it in use!
 
+> 🚧  Full documentation for Riduce is under construction - but the API is essentially the same as [Redux-Leaves](https://redux-leaves.js.org), except `riduce` replaces the `reduxLeaves` default export.
+> Currently documented here are indicative examples on setup, usage and customisation. These give quite a lot of information about how the library is used.
+> For more specifics, please consult the Redux-Leaves documentation to see, e.g., the [default action creators](https://redux-leaves.js.org/docs/defaults/overview) which [`create`](https://redux-leaves.js.org/docs/api/create) gives access to.
+
 # Introductory Example
 For a `useReducer` example, [see this CodeSandbox](https://codesandbox.io/s/riduce-example-madlibs-for-developers-njo9t).
 
@@ -150,3 +154,7 @@ Have fun adding it to your project!
 ```bash
 npm install riduce
 ```
+
+> 🚧  Full documentation for Riduce is under construction - but the API is essentially the same as [Redux-Leaves](https://redux-leaves.js.org), except `riduce` replaces the `reduxLeaves` default export.
+> Currently documented here are indicative examples on setup, usage and customisation. These give quite a lot of information about how the library is used.
+> For more specifics, please consult the Redux-Leaves documentation to see, e.g., the [default action creators](https://redux-leaves.js.org/docs/defaults/overview) which [`create`](https://redux-leaves.js.org/docs/api/create) gives access to.
