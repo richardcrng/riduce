@@ -1,13 +1,8 @@
-import riduce, { Reducer } from './riduce'
-import bundle from './bundle'
-export { Action, ActionWithPayload } from './types'
+import riduce, { Reducer } from './riduce';
+import bundle from './bundle';
+export { Action, ActionWithPayload } from './types';
 export { RiducerDict, Riducer, PermissiveRiducer, ShorthandRiducer, LonghandRiducer } from './types';
 
+export default riduce;
 
-export default riduce
-
-export {
-  bundle,
-  riduce,
-  Reducer
-}
+export { bundle, riduce, Reducer };

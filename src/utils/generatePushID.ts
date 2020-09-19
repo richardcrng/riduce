@@ -27,7 +27,7 @@ const generatePushID: () => string = (function () {
 
   return function () {
     var now = new Date().getTime();
-    var duplicateTime = (now === lastPushTime);
+    var duplicateTime = now === lastPushTime;
     lastPushTime = now;
 
     var timeStampChars = new Array(8);
@@ -60,4 +60,4 @@ const generatePushID: () => string = (function () {
   };
 })();
 
-export default generatePushID
+export default generatePushID;

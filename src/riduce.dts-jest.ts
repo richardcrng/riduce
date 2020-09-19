@@ -1,25 +1,25 @@
-import { useReducer } from 'react'
-import { createStore } from 'redux'
-import riduce, { Riducer, ActionWithPayload } from "."
+import { useReducer } from 'react';
+import { createStore } from 'redux';
+import riduce, { Riducer, ActionWithPayload } from '.';
 
 // @dts-jest:group Library consistency
 {
   const initialState = {
     name: 'Richard',
-    coder: true
-  }
+    coder: true,
+  };
 
-  const [reducer, actions] = riduce(initialState)
-  
+  const [reducer, actions] = riduce(initialState);
+
   function Empty() {
     // @dts-jest:pass Works with useReducer
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    return null
+    return null;
   }
 
   // @dts-jest:pass Works with createStore
-  const store = createStore(reducer)
+  const store = createStore(reducer);
 }
 
 // @dts-jest:group Actions shape mirrors state
@@ -29,19 +29,19 @@ import riduce, { Riducer, ActionWithPayload } from "."
     nested: {
       counter: 0,
       state: {
-        deep: 'somewhat'
-      }
+        deep: 'somewhat',
+      },
     },
-    list: [1, 2, 3]
-  }
+    list: [1, 2, 3],
+  };
 
-  const [reducer, actions] = riduce(initialState)
+  const [reducer, actions] = riduce(initialState);
 
   // @dts-jest:pass Root actions has a create
-  actions.create
+  actions.create;
 
-  // @dts-jest:pass 
-  actions.create.update
+  // @dts-jest:pass
+  actions.create.update;
 
   // @dts-jest:pass Root actions create.update takes state shape
   const updateAction = actions.create.update({
@@ -49,32 +49,32 @@ import riduce, { Riducer, ActionWithPayload } from "."
     nested: {
       counter: 5,
       state: {
-        deep: 'foobar'
-      }
+        deep: 'foobar',
+      },
     },
-    list: [4, 10, 2]
-  })
+    list: [4, 10, 2],
+  });
 
   // @dts-jest:pass Reducer can take this created action
-  reducer(initialState, updateAction)
+  reducer(initialState, updateAction);
 
   // @dts-jest:fail Root actions create.update requires argument
-  actions.create.update()
+  actions.create.update();
 
   // @dts-jest:fail Root actions create.update requires conforming argument
-  actions.create.update({ shallow: 'false' })
+  actions.create.update({ shallow: 'false' });
 
   // @dts-jest:pass
-  actions.shallow
+  actions.shallow;
 
   // @dts-jest:fail
-  actions.foobar
+  actions.foobar;
 
   // @dts-jest:pass
-  actions.nested.counter
+  actions.nested.counter;
 
   // @dts-jest:fail
-  actions.nested.string
+  actions.nested.string;
 }
 
 // @dts-jest:group Creators are sensitive to the leaf type
@@ -84,39 +84,39 @@ import riduce, { Riducer, ActionWithPayload } from "."
     nested: {
       num: 0,
       state: {
-        str: 'somewhat'
-      }
+        str: 'somewhat',
+      },
     },
-    numList: [1, 2, 3]
-  }
+    numList: [1, 2, 3],
+  };
 
-  const [reducer, actions] = riduce(initialState)
+  const [reducer, actions] = riduce(initialState);
 
   // @dts-jest:pass Update can be passed boolean for boolState
-  actions.boolState.create.update(true)
+  actions.boolState.create.update(true);
 
   // @dts-jest:fail Update cannot be passed string for boolState
-  actions.boolState.create.update('true')
+  actions.boolState.create.update('true');
 
   // @dts-jest:pass Update can be passed number for number state
-  actions.nested.num.create.update(5)
+  actions.nested.num.create.update(5);
 
   // @dts-jest:fail Update cannot be passed string for number state
-  actions.nested.num.create.update('5')
+  actions.nested.num.create.update('5');
 
   // @dts-jest:pass Update can be passed object for object state
   actions.nested.state.create.update({
-    str: 'foobar'
-  })
+    str: 'foobar',
+  });
 
   // @dts-jest:fail Update cannot be passed bad object for object state
-  actions.nested.state.create.update({ randomKey: 'foobar' })
+  actions.nested.state.create.update({ randomKey: 'foobar' });
 
   // @dts-jest:pass Update can be passed number[] for number[] state
-  actions.numList.create.update([2, 4, 8])
+  actions.numList.create.update([2, 4, 8]);
 
   // @dts-jest:fail Update cannot be passed string[] for number[]
-  actions.numList.create.update(['2'])
+  actions.numList.create.update(['2']);
 }
 
 // @dts-jest:group Custom reducer, explicitly typed
@@ -126,37 +126,37 @@ import riduce, { Riducer, ActionWithPayload } from "."
     nested: {
       counter: 0,
       state: {
-        deep: 'somewhat'
-      }
+        deep: 'somewhat',
+      },
     },
-    list: [1, 2, 3]
-  }
+    list: [1, 2, 3],
+  };
 
   const multiplyBy: Riducer<{
-    leafState: number,
-    payload: number,
-    args: [number]
+    leafState: number;
+    payload: number;
+    args: [number];
   }> = {
     argsToPayload: (num) => num,
-    reducer: (leafState, action) => leafState * action.payload
-  }
+    reducer: (leafState, action) => leafState * action.payload,
+  };
 
-  const [reducer, actions] = riduce(initialState, { multiplyBy })
+  const [reducer, actions] = riduce(initialState, { multiplyBy });
 
   // @dts-jest:fail does not exist on boolean state
-  actions.shallow.create.multiplyBy
+  actions.shallow.create.multiplyBy;
 
   // @dts-jest:pass exists on number state
-  actions.nested.counter.create.multiplyBy
+  actions.nested.counter.create.multiplyBy;
 
   // @dts-jest:fail needs an argument
-  actions.nested.counter.create.multiplyBy()
+  actions.nested.counter.create.multiplyBy();
 
   // @dts-jest:pass accepts numerical argument
-  actions.nested.counter.create.multiplyBy(2)
+  actions.nested.counter.create.multiplyBy(2);
 
   // @dts-jest:fail rejects string argument
-  actions.nested.counter.create.multiplyBy('2')
+  actions.nested.counter.create.multiplyBy('2');
 }
 
 // @dts-jest:group Custom reducer, implicitly typed
@@ -166,31 +166,31 @@ import riduce, { Riducer, ActionWithPayload } from "."
     nested: {
       counter: 0,
       state: {
-        deep: 'somewhat'
-      }
+        deep: 'somewhat',
+      },
     },
-    list: [1, 2, 3]
-  }
+    list: [1, 2, 3],
+  };
 
   const multiplyBy = {
     argsToPayload: (num: number) => num,
-    reducer: (leafState: number, action: ActionWithPayload<number> ) => leafState * action.payload
-  }
+    reducer: (leafState: number, action: ActionWithPayload<number>) => leafState * action.payload,
+  };
 
-  const [reducer, actions] = riduce(initialState, { multiplyBy })
+  const [reducer, actions] = riduce(initialState, { multiplyBy });
 
   // @dts-jest:fail does not exist on boolean state
-  actions.shallow.create.multiplyBy
+  actions.shallow.create.multiplyBy;
 
   // @dts-jest:pass exists on number state
-  actions.nested.counter.create.multiplyBy
+  actions.nested.counter.create.multiplyBy;
 
   // @dts-jest:fail needs an argument
-  actions.nested.counter.create.multiplyBy()
+  actions.nested.counter.create.multiplyBy();
 
   // @dts-jest:pass accepts numerical argument
-  actions.nested.counter.create.multiplyBy(2)
+  actions.nested.counter.create.multiplyBy(2);
 
   // @dts-jest:fail rejects string argument
-  actions.nested.counter.create.multiplyBy('2')
+  actions.nested.counter.create.multiplyBy('2');
 }

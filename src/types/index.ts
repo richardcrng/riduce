@@ -1,2 +1,2 @@
-export * from './action-types'
-export * from './creator-types'
+export * from './action-types';
+export * from './creator-types';
