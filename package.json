@@ -33,9 +33,11 @@
     "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
+    "postversion" : "git push && git push --tags",
     "prepublishOnly": "npm run build",
     "test": "jest --watch --runInBand",
-    "test:types": "dts-jest"
+    "test:types": "dts-jest",
+    "version": "npm run format"
   },
   "eslintConfig": {
     "extends": "react-app"
