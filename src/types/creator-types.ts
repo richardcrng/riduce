@@ -20,7 +20,7 @@ export type CreateAPI<
 > = DefaultCreators<LeafT, TreeT, RiducerDictT> & CreateFn<DefaultCreators<LeafT, TreeT, RiducerDictT>>
 
 export type TypedCreators<LeafT, TreeT> =
-  LeafT extends Array<unknown>
+  LeafT extends unknown[]
     ? ArrayCreators<LeafT, TreeT> :
   LeafT extends number
     ? NumberCreators<LeafT, TreeT> :

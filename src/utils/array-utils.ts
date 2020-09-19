@@ -27,4 +27,4 @@ const insertBeforeIndex = (arr: any[], idx: number, newVal: any) => [
 ];
 
 const positiveIndex = (array: any[], index: number | string) =>
-  index < 0 ? array.length + parseInt(`${index}`) : parseInt(`${index}`);
+  index < 0 ? array.length + parseInt(`${index}`, undefined) : parseInt(`${index}`, undefined);

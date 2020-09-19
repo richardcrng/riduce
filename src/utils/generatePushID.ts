@@ -1,5 +1,7 @@
 // Public gist: https://gist.github.com/mikelehen/3596a30bd69384624c11
 
+/* tslint:disable */
+
 /**
  * Fancy ID generator that creates 20-character string identifiers with the following properties:
  *

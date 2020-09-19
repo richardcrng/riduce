@@ -40,7 +40,7 @@ function createActionsProxy<
 
 const propForPath = (prop: string | number): string | number => (
   isFixedString(prop)
-    ? parseInt(String(prop))
+    ? parseInt(String(prop), undefined)
     : prop
 )
 
