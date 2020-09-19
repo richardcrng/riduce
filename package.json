@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "Get rid of your reducer boilerplate! Zero hassle state management that's typed, flexible and scalable.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Richard Ng",
