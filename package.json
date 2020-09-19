@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist/**/*"],
+  "keywords": ["state management", "redux", "reducers", "useReducer", "typescript"],
   "license": "MIT",
   "author": {
     "name": "Richard Ng",
