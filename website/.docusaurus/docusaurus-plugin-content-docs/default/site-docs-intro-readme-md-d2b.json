@@ -1,0 +1,17 @@
+{
+  "unversionedId": "intro/overview",
+  "id": "intro/overview",
+  "isDocsHomePage": false,
+  "title": "Overview",
+  "description": "Whether you're using useReducer or redux, the reducer state management pattern is a powerful architectural tool! 😍",
+  "source": "@site/docs/intro/README.md",
+  "slug": "/intro/overview",
+  "permalink": "/docs/intro/overview",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/intro/README.md",
+  "version": "current",
+  "sidebar": "mainSidebar",
+  "next": {
+    "title": "Motivation",
+    "permalink": "/docs/intro/motivation"
+  }
+}

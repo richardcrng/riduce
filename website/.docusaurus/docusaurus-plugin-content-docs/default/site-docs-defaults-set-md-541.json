@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/set",
+  "id": "defaults/set",
+  "isDocsHomePage": false,
+  "title": "set",
+  "description": "set(key, value)",
+  "source": "@site/docs/defaults/set.md",
+  "slug": "/defaults/set",
+  "permalink": "/docs/defaults/set",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/set.md",
+  "version": "current",
+  "sidebar_label": "set"
+}

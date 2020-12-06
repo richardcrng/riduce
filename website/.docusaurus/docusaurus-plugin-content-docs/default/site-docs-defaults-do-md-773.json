@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/do",
+  "id": "defaults/do",
+  "isDocsHomePage": false,
+  "title": "do",
+  "description": "do(callback)",
+  "source": "@site/docs/defaults/do.md",
+  "slug": "/defaults/do",
+  "permalink": "/docs/defaults/do",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/do.md",
+  "version": "current",
+  "sidebar_label": "do"
+}

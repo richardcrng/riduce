@@ -1,0 +1,13 @@
+{
+  "unversionedId": "api/creator-keys",
+  "id": "api/creator-keys",
+  "isDocsHomePage": false,
+  "title": "Creator Keys",
+  "description": "Creator keys",
+  "source": "@site/docs/api/creatorKeys.md",
+  "slug": "/api/creator-keys",
+  "permalink": "/docs/api/creator-keys",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/api/creatorKeys.md",
+  "version": "current",
+  "sidebar_label": "Creator keys"
+}

@@ -1,0 +1,13 @@
+{
+  "unversionedId": "examples/typescript-example",
+  "id": "examples/typescript-example",
+  "isDocsHomePage": false,
+  "title": "TypeScript example",
+  "description": "TypeScript example",
+  "source": "@site/docs/examples/typescriptExample.md",
+  "slug": "/examples/typescript-example",
+  "permalink": "/docs/examples/typescript-example",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/examples/typescriptExample.md",
+  "version": "current",
+  "sidebar_label": "TypeScript example"
+}

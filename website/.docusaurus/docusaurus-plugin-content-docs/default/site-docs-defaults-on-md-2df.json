@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/on",
+  "id": "defaults/on",
+  "isDocsHomePage": false,
+  "title": "on",
+  "description": "on()",
+  "source": "@site/docs/defaults/on.md",
+  "slug": "/defaults/on",
+  "permalink": "/docs/defaults/on",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/on.md",
+  "version": "current",
+  "sidebar_label": "on"
+}

@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/concat",
+  "id": "defaults/concat",
+  "isDocsHomePage": false,
+  "title": "concat",
+  "description": "concat(arrayOrString)",
+  "source": "@site/docs/defaults/concat.md",
+  "slug": "/defaults/concat",
+  "permalink": "/docs/defaults/concat",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/concat.md",
+  "version": "current",
+  "sidebar_label": "concat"
+}

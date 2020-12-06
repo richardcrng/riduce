@@ -1,0 +1,17 @@
+{
+  "unversionedId": "intro/features",
+  "id": "intro/features",
+  "isDocsHomePage": false,
+  "title": "Features",
+  "description": "Features",
+  "source": "@site/docs/intro/features.md",
+  "slug": "/intro/features",
+  "permalink": "/docs/intro/features",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/intro/features.md",
+  "version": "current",
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Motivation",
+    "permalink": "/docs/intro/motivation"
+  }
+}

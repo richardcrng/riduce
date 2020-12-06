@@ -1,0 +1,21 @@
+{
+  "unversionedId": "intro/motivation",
+  "id": "intro/motivation",
+  "isDocsHomePage": false,
+  "title": "Motivation",
+  "description": "Another state management library...?",
+  "source": "@site/docs/intro/why.md",
+  "slug": "/intro/motivation",
+  "permalink": "/docs/intro/motivation",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/intro/why.md",
+  "version": "current",
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/docs/intro/overview"
+  },
+  "next": {
+    "title": "Features",
+    "permalink": "/docs/intro/features"
+  }
+}

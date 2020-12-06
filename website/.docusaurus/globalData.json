@@ -1,0 +1,146 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro/overview",
+          "docs": [
+            {
+              "id": "api/actions",
+              "path": "/docs/api/actions"
+            },
+            {
+              "id": "api/bundle",
+              "path": "/docs/api/bundle"
+            },
+            {
+              "id": "api/create",
+              "path": "/docs/api/create"
+            },
+            {
+              "id": "api/creator-keys",
+              "path": "/docs/api/creator-keys"
+            },
+            {
+              "id": "api/leaf-reducers",
+              "path": "/docs/api/leaf-reducers"
+            },
+            {
+              "id": "defaults/assign",
+              "path": "/docs/defaults/assign"
+            },
+            {
+              "id": "defaults/clear",
+              "path": "/docs/defaults/clear"
+            },
+            {
+              "id": "defaults/concat",
+              "path": "/docs/defaults/concat"
+            },
+            {
+              "id": "defaults/do",
+              "path": "/docs/defaults/do"
+            },
+            {
+              "id": "defaults/drop",
+              "path": "/docs/defaults/drop"
+            },
+            {
+              "id": "defaults/filter",
+              "path": "/docs/defaults/filter"
+            },
+            {
+              "id": "defaults/increment",
+              "path": "/docs/defaults/increment"
+            },
+            {
+              "id": "defaults/off",
+              "path": "/docs/defaults/off"
+            },
+            {
+              "id": "defaults/on",
+              "path": "/docs/defaults/on"
+            },
+            {
+              "id": "defaults/overview",
+              "path": "/docs/defaults/overview"
+            },
+            {
+              "id": "defaults/path",
+              "path": "/docs/defaults/path"
+            },
+            {
+              "id": "defaults/push",
+              "path": "/docs/defaults/push"
+            },
+            {
+              "id": "defaults/pushed-set",
+              "path": "/docs/defaults/pushed-set"
+            },
+            {
+              "id": "defaults/reset",
+              "path": "/docs/defaults/reset"
+            },
+            {
+              "id": "defaults/set",
+              "path": "/docs/defaults/set"
+            },
+            {
+              "id": "defaults/toggle",
+              "path": "/docs/defaults/toggle"
+            },
+            {
+              "id": "defaults/update",
+              "path": "/docs/defaults/update"
+            },
+            {
+              "id": "examples/advanced-example",
+              "path": "/docs/examples/advanced-example"
+            },
+            {
+              "id": "examples/basic-example",
+              "path": "/docs/examples/basic-example"
+            },
+            {
+              "id": "examples/intermediate-example",
+              "path": "/docs/examples/intermediate-example"
+            },
+            {
+              "id": "examples/typescript-example",
+              "path": "/docs/examples/typescript-example"
+            },
+            {
+              "id": "examples/usereducer-example",
+              "path": "/docs/examples/usereducer-example"
+            },
+            {
+              "id": "intro/features",
+              "path": "/docs/intro/features"
+            },
+            {
+              "id": "intro/motivation",
+              "path": "/docs/intro/motivation"
+            },
+            {
+              "id": "intro/overview",
+              "path": "/docs/intro/overview"
+            },
+            {
+              "id": "riduce",
+              "path": "/docs/riduce"
+            },
+            {
+              "id": "typescript/overview",
+              "path": "/docs/typescript/overview"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

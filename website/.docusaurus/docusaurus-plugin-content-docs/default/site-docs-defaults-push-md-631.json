@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/push",
+  "id": "defaults/push",
+  "isDocsHomePage": false,
+  "title": "push",
+  "description": "push(element, [index = -1], [replace = false])",
+  "source": "@site/docs/defaults/push.md",
+  "slug": "/defaults/push",
+  "permalink": "/docs/defaults/push",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/push.md",
+  "version": "current",
+  "sidebar_label": "push"
+}

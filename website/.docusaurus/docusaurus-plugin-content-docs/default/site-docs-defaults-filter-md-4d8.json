@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/filter",
+  "id": "defaults/filter",
+  "isDocsHomePage": false,
+  "title": "filter",
+  "description": "filter(callback)",
+  "source": "@site/docs/defaults/filter.md",
+  "slug": "/defaults/filter",
+  "permalink": "/docs/defaults/filter",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/filter.md",
+  "version": "current",
+  "sidebar_label": "filter"
+}

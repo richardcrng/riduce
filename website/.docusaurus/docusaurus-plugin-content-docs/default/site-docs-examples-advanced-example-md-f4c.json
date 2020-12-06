@@ -1,0 +1,13 @@
+{
+  "unversionedId": "examples/advanced-example",
+  "id": "examples/advanced-example",
+  "isDocsHomePage": false,
+  "title": "Advanced example",
+  "description": "Advanced example: bundling actions, custom types and controlling payloads",
+  "source": "@site/docs/examples/advancedExample.md",
+  "slug": "/examples/advanced-example",
+  "permalink": "/docs/examples/advanced-example",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/examples/advancedExample.md",
+  "version": "current",
+  "sidebar_label": "Advanced example"
+}

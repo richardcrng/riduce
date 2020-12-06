@@ -1,0 +1,13 @@
+{
+  "unversionedId": "defaults/pushed-set",
+  "id": "defaults/pushed-set",
+  "isDocsHomePage": false,
+  "title": "pushed-set",
+  "description": "pushedSet(valueOrCallback)",
+  "source": "@site/docs/defaults/pushedSet.md",
+  "slug": "/defaults/pushed-set",
+  "permalink": "/docs/defaults/pushed-set",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/defaults/pushedSet.md",
+  "version": "current",
+  "sidebar_label": "pushed-set"
+}

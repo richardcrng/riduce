@@ -1,0 +1,13 @@
+{
+  "unversionedId": "api/create",
+  "id": "api/create",
+  "isDocsHomePage": false,
+  "title": "create",
+  "description": "create",
+  "source": "@site/docs/api/create.md",
+  "slug": "/api/create",
+  "permalink": "/docs/api/create",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/api/create.md",
+  "version": "current",
+  "sidebar_label": "create"
+}

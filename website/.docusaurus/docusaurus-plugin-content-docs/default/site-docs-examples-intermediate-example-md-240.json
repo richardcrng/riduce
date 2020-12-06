@@ -1,0 +1,13 @@
+{
+  "unversionedId": "examples/intermediate-example",
+  "id": "examples/intermediate-example",
+  "isDocsHomePage": false,
+  "title": "Intermediate example",
+  "description": "Intermediate example: custom logic",
+  "source": "@site/docs/examples/intermediateExample.md",
+  "slug": "/examples/intermediate-example",
+  "permalink": "/docs/examples/intermediate-example",
+  "editUrl": "https://github.com/richardcrng/riduce/edit/master/website/docs/examples/intermediateExample.md",
+  "version": "current",
+  "sidebar_label": "Intermediate example"
+}
