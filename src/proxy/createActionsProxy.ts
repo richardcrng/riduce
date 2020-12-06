@@ -3,8 +3,8 @@ import { RiducerDict, CreateAPI } from '../types'
 
 export type ActionsProxy<
   LeafT,
-  TreeT,
-  RiducerDictT extends RiducerDict<TreeT>
+  TreeT = LeafT,
+  RiducerDictT extends RiducerDict<TreeT> = RiducerDict<TreeT>
 > = {
   create: CreateAPI<LeafT, TreeT, RiducerDictT>
 } & {
