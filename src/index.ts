@@ -1,6 +1,6 @@
 import riduce, { Reducer } from './riduce'
 import bundle from './bundle'
-export { Action, ActionWithPayload } from './types'
+export { Action, ActionWithPayload, ActionsProxy } from './types'
 export { RiducerDict, Riducer, PermissiveRiducer, ShorthandRiducer, LonghandRiducer } from './types';
 
 
