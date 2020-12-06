@@ -38,12 +38,15 @@ function createActionsProxy<
   return proxy as unknown as ActionsProxy<LeafT, TreeT, RiducerDictT>
 }
 
-const propForPath = (prop: string | number): string | number => (
+const propForPath = (prop: string | number | Symbol): string | number => (
   isFixedString(prop)
     ? parseInt(String(prop))
-    : prop
+    : String(prop)
 )
 
-const isFixedString = (s: string | number) => !isNaN(+s) && isFinite(+s) && !/e/i.test(String(s))
+const isFixedString = (s: string | number | Symbol) => {
+  const n = Number(s)
+  return !isNaN(n) && isFinite(n) && !/e/i.test(String(s))
+}
 
 export default createActionsProxy
