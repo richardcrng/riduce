@@ -1,5 +1,6 @@
-import createActionsProxy from './createActionsProxy';
+import createActionsProxy, { ActionsProxy } from './createActionsProxy';
 
 export {
-  createActionsProxy
+  createActionsProxy,
+  ActionsProxy
 }
