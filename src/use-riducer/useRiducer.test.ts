@@ -47,6 +47,43 @@ describe("useRiducer", () => {
     ]);
   });
 
+  it("can process sequential dispatches", () => {
+    const initialState = {
+      counter: 0,
+      messages: ["hello world!"],
+      nested: {
+        state: {
+          isHard: true,
+        },
+      },
+    };
+
+    const { result } = renderHook(() => useRiducer(initialState));
+    const newMessage = "second in my bundle";
+
+    act(() => {
+      result.current.dispatch(
+        result.current.actions.messages.create.push(newMessage)
+      );
+      result.current.dispatch(
+        result.current.actions.counter.create.increment(1000)
+      );
+      result.current.dispatch(
+        result.current.actions.nested.state.isHard.create.toggle()
+      );
+    });
+
+    expect(result.current.state).toEqual({
+      counter: 1000,
+      messages: [...initialState.messages, newMessage],
+      nested: {
+        state: {
+          isHard: false,
+        },
+      },
+    });
+  });
+
   it("can process bundled updates", () => {
     const initialState = {
       counter: 0,
