@@ -17,8 +17,8 @@ export type CreateAPI<
   LeafT,
   TreeT,
   RiducerDictT extends RiducerDict<TreeT>
-> = DefaultCreators<LeafT, TreeT, RiducerDictT> &
-  CreateFn<DefaultCreators<LeafT, TreeT, RiducerDictT>>;
+> = Creators<LeafT, TreeT, RiducerDictT> &
+  CreateFn<Creators<LeafT, TreeT, RiducerDictT>>;
 
 export type TypedCreators<LeafT, TreeT> = LeafT extends Array<unknown>
   ? ArrayCreators<LeafT, TreeT>
@@ -32,7 +32,7 @@ export type TypedCreators<LeafT, TreeT> = LeafT extends Array<unknown>
   ? ObjectCreators<LeafT, TreeT>
   : {};
 
-export type DefaultCreators<
+export type Creators<
   LeafT,
   TreeT,
   RiducerDictT extends RiducerDict<TreeT>
