@@ -3,6 +3,7 @@
 
 # source
 /src
+/docs
 
 # testing
 /coverage
