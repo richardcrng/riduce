@@ -1,20 +1,23 @@
-import { prop } from 'ramda';
-import { Action, BundledAction } from "./types"
+import { prop } from "ramda";
+import { Action, BundledAction } from "./types";
 
-function bundle(actions: (Action | BundledAction)[], type?: string): BundledAction {
-  const actionTypes = actions.map(prop('type'))
+function bundle(
+  actions: (Action | BundledAction)[],
+  type?: string
+): BundledAction {
+  const actionTypes = actions.map(prop("type"));
 
   return {
-    type: type || actionTypes.join('; '),
+    type: type || actionTypes.join("; "),
     payload: actions,
     leaf: {
-      creatorKey: 'bundle',
-      CREATOR_KEY: 'bundle',
+      creatorKey: "bundle",
+      CREATOR_KEY: "bundle",
       custom: false,
       bundled: actionTypes,
-      path: []
-    }
-  }
+      path: [],
+    },
+  };
 }
 
-export default bundle
+export default bundle;
