@@ -76,12 +76,21 @@ describe("Basic example", () => {
 
       const result = reducer(
         hydratedState,
-        actions.list[4].create.increment(2)
+        actions.list[3].create.increment(2)
       );
 
       expect(result).toStrictEqual({
         ...initialState,
         list: [...initialState.list, 6],
+      });
+    });
+
+    it("Creates actions at array elements even if undefined in previous state", () => {
+      const result = reducer(initialState, actions.list[3].create.increment(4));
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        list: [...initialState.list, 4],
       });
     });
   });
