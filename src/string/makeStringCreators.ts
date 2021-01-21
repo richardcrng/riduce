@@ -1,15 +1,30 @@
-import makeCreatorOfTypeFromPath from '../create/makeCreatorOfTypeFromPath';
-import { CreateFn } from '../types';
-import { StringCreators, StringCreatorKeys } from './string-types';
+import makeCreatorOfTypeFromPath from "../create/makeCreatorOfTypeFromPath";
+import { CreateFn } from "../types";
+import { StringCreators, StringCreatorKeys } from "./string-types";
 
-function makeStringCreators<L extends string, T>(leafState: L, path: (string | number)[]): CreateFn<StringCreators<L, T>> {
-  const makeCreatorOfType = makeCreatorOfTypeFromPath(path)
+function makeStringCreators<L extends string, T>(
+  leafState: L,
+  path: (string | number)[]
+): CreateFn<StringCreators<L, T>> {
+  const makeCreatorOfType = makeCreatorOfTypeFromPath(path);
   return (passedType?: string) => {
-    const creatorOfType = makeCreatorOfType(passedType)
+    const creatorOfType = makeCreatorOfType(passedType);
     return {
-      concat: (n) => creatorOfType(StringCreatorKeys.CONCAT, n)
-    }
-  }
+      concat: (n) => creatorOfType(StringCreatorKeys.CONCAT, n),
+    };
+  };
 }
 
-export default makeStringCreators
+export function madeStringCreators<L extends string, T>(
+  leafState: L,
+  path: (string | number)[],
+  makeCreatorOfType: ReturnType<typeof makeCreatorOfTypeFromPath>,
+  passedType?: string
+): StringCreators<L, T> {
+  const creatorOfType = makeCreatorOfType(passedType);
+  return {
+    concat: (n) => creatorOfType(StringCreatorKeys.CONCAT, n),
+  };
+}
+
+export default makeStringCreators;
