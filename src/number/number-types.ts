@@ -15,7 +15,7 @@ export type NumberActions<
 > = ReturnType<NumberCreators<LeafT, TreeT>[KeyT]>;
 
 export function isNumberAction(action: Action): boolean {
-  return isNumberAction(action);
+  return isIncrementAction(action);
 }
 
 export function isIncrementAction(
