@@ -184,3 +184,52 @@ describe("Custom reducers", () => {
     });
   });
 });
+
+describe("with undefined state", () => {
+  interface State {
+    maybeNumber: number | undefined;
+    maybeString: string | undefined;
+  }
+
+  test("Works when state has defined values", () => {
+    const state: State = {
+      maybeNumber: 4,
+      maybeString: "hello world",
+    };
+
+    const [reducer, actions] = riduce(state);
+    expect(
+      reducer(state, actions.maybeNumber.create.increment())
+    ).toStrictEqual({
+      maybeNumber: 5,
+      maybeString: "hello world",
+    });
+    expect(
+      reducer(state, actions.maybeString.create.concat("!!"))
+    ).toStrictEqual({
+      maybeNumber: 4,
+      maybeString: "hello world!!",
+    });
+  });
+
+  test("Works when state has undefined values", () => {
+    const state: State = {
+      maybeNumber: undefined,
+      maybeString: undefined,
+    };
+
+    const [reducer, actions] = riduce(state);
+    expect(
+      reducer(state, actions.maybeNumber.create.increment())
+    ).toStrictEqual({
+      maybeNumber: 1,
+      maybeString: undefined,
+    });
+    expect(
+      reducer(state, actions.maybeString.create.concat("!!"))
+    ).toStrictEqual({
+      maybeNumber: undefined,
+      maybeString: "!!",
+    });
+  });
+});
