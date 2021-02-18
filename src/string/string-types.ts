@@ -15,7 +15,7 @@ export type StringActions<
 > = ReturnType<StringCreators<LeafT, TreeT>[KeyT]>;
 
 export function isStringAction(action: Action): boolean {
-  return isStringAction(action);
+  return isConcatActionString(action);
 }
 
 export function isConcatActionString(
