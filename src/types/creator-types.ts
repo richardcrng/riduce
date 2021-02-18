@@ -20,16 +20,19 @@ export type CreateAPI<
 > = Creators<LeafT, TreeT, RiducerDictT> &
   CreateFn<Creators<LeafT, TreeT, RiducerDictT>>;
 
-export type TypedCreators<LeafT, TreeT> = LeafT extends Array<unknown>
-  ? ArrayCreators<LeafT, TreeT>
-  : LeafT extends number
-  ? NumberCreators<LeafT, TreeT>
-  : LeafT extends string
-  ? StringCreators<LeafT, TreeT>
-  : LeafT extends boolean
-  ? BooleanCreators<LeafT, TreeT>
-  : LeafT extends {}
-  ? ObjectCreators<LeafT, TreeT>
+export type TypedCreators<
+  LeafT,
+  TreeT
+> = NonNullable<LeafT> extends Array<unknown>
+  ? ArrayCreators<NonNullable<LeafT>, TreeT>
+  : NonNullable<LeafT> extends number
+  ? NumberCreators<NonNullable<LeafT>, TreeT>
+  : NonNullable<LeafT> extends string
+  ? StringCreators<NonNullable<LeafT>, TreeT>
+  : NonNullable<LeafT> extends boolean
+  ? BooleanCreators<NonNullable<LeafT>, TreeT>
+  : NonNullable<LeafT> extends {}
+  ? ObjectCreators<NonNullable<LeafT>, TreeT>
   : {};
 
 export type Creators<
