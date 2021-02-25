@@ -33,7 +33,7 @@ function makeReducer<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}>(
   ): TreeT => {
     if (!isRiduceAction(action, treeState)) return treeState;
 
-    if (isCallbackAction(action, treeState)) {
+    if (isCallbackAction(action)) {
       const createdAction = action(treeState);
       return reducer(treeState, createdAction);
     } else if (isBundledAction(action)) {
