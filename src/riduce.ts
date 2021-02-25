@@ -26,7 +26,7 @@ export type Riduce<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}> = [
 function makeReducer<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}>(
   initialState: TreeT,
   riducerDict: RiducerDictT
-): Reducer<TreeT, RiduceAction<TreeT>> {
+): Reducer<TreeT, RiduceAction<TreeT> | OrdinaryAction> {
   const reducer = (
     treeState: TreeT = initialState,
     action: RiduceAction<TreeT> | OrdinaryAction
