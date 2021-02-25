@@ -21,28 +21,37 @@ export interface ActionWithPayload<PayloadT> extends Action<PayloadT> {
   payload: PayloadT;
 }
 
-export interface BundledAction extends ActionWithPayload<RiduceAction[]> {
+export interface BundledAction<TreeT>
+  extends ActionWithPayload<RiduceAction<TreeT>[]> {
   leaf: LeafData & {
     bundled: string[];
   };
 }
 
 export interface CallbackAction<TreeT = unknown> {
-  (treeState: TreeT): Action | BundledAction;
+  (treeState: TreeT): Action | BundledAction<TreeT>;
   leaf?: unknown;
 }
 
 export type RiduceAction<TreeT = unknown> = Action | CallbackAction<TreeT>;
 
-export function isBundledAction(action: Action): action is BundledAction {
+export function calledBackAction<TreeT>(
+  action: CallbackAction,
+  treeState: TreeT
+): Action {
+  return action(treeState);
+}
+
+export function isBundledAction<TreeT extends unknown>(
+  action: Action
+): action is BundledAction<TreeT> {
   return !!action.leaf.bundled;
 }
 
 export function isCallbackAction<TreeT>(
-  action: RiduceAction<TreeT>,
-  treeState: TreeT
+  action: RiduceAction<TreeT>
 ): action is CallbackAction<TreeT> {
-  return typeof action === "function" && !!action(treeState)?.leaf;
+  return typeof action === "function";
 }
 
 export function isRiduceAction<TreeT>(

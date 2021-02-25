@@ -1,11 +1,13 @@
 import { prop } from "ramda";
-import { Action, BundledAction } from "./types";
+import { Action, BundledAction, isCallbackAction, RiduceAction } from "./types";
 
-function bundle(
-  actions: (Action | BundledAction)[],
+function bundle<TreeT = unknown>(
+  actions: RiduceAction<TreeT>[],
   type?: string
-): BundledAction {
-  const actionTypes = actions.map(prop("type"));
+): BundledAction<TreeT> {
+  const actionTypes = actions.map((action) =>
+    isCallbackAction(action) ? action.name : action.type
+  );
 
   return {
     type: type || actionTypes.join("; "),

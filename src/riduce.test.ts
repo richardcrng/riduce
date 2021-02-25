@@ -1,4 +1,4 @@
-import riduce, { Riducer } from ".";
+import riduce, { Riducer, bundle } from ".";
 
 describe("Basic example", () => {
   const initialState = {
@@ -66,7 +66,7 @@ describe("Basic example", () => {
       });
     });
 
-    test("Update using a function action", () => {
+    test("Can update using a callback action", () => {
       const result = reducer(initialState, (state) =>
         actions.list.create.push(state.nested.counter)
       );
@@ -74,6 +74,28 @@ describe("Basic example", () => {
       expect(result).toStrictEqual({
         ...initialState,
         list: [...initialState.list, initialState.nested.counter],
+      });
+    });
+
+    test("Can update using a bundle of callback actions", () => {
+      const result = reducer(
+        initialState,
+        bundle<typeof initialState>([
+          actions.nested.counter.create.increment(2),
+          (treeState) =>
+            actions.list.create.update(
+              treeState.list.map((val) => val * treeState.nested.counter)
+            ),
+        ])
+      );
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        nested: {
+          ...initialState,
+          counter: initialState.nested.counter + 2,
+        },
+        list: initialState.list.map((n) => n * 2),
       });
     });
   });
