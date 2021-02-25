@@ -1,4 +1,4 @@
-import riduce, { Riducer } from ".";
+import riduce, { Riducer, bundle } from ".";
 
 describe("Basic example", () => {
   const initialState = {
@@ -63,6 +63,56 @@ describe("Basic example", () => {
             deep: "banana",
           },
         },
+      });
+    });
+
+    test("Can update using a callback action", () => {
+      const result = reducer(initialState, (state) =>
+        actions.list.create.push(state.nested.counter)
+      );
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        list: [...initialState.list, initialState.nested.counter],
+      });
+    });
+
+    test("Can update using a bundle of callback actions", () => {
+      const bundledActions = bundle<typeof initialState>([
+        actions.nested.counter.create.increment(2),
+        (treeState) =>
+          actions.list.create.update(
+            treeState.list.map((val) => val * treeState.nested.counter)
+          ),
+      ]);
+
+      const result = reducer(initialState, bundledActions);
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        nested: {
+          ...initialState.nested,
+          counter: initialState.nested.counter + 2,
+        },
+        list: initialState.list.map((n) => n * 2),
+      });
+    });
+
+    test("Can update using a callback to bundle actions", () => {
+      const result = reducer(initialState, (treeState) =>
+        bundle([
+          actions.nested.counter.create.increment(Math.max(...treeState.list)),
+          actions.list.create.push(treeState.nested.counter),
+        ])
+      );
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        nested: {
+          ...initialState.nested,
+          counter: Math.max(...initialState.list),
+        },
+        list: [...initialState.list, initialState.nested.counter],
       });
     });
   });
