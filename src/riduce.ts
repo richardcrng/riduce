@@ -8,6 +8,8 @@ import {
   CallbackAction,
   isCallbackAction,
   RiduceAction,
+  OrdinaryAction,
+  isRiduceAction,
 } from "./types";
 import updateState, { getState } from "./utils/update-state";
 
@@ -17,7 +19,7 @@ export type Reducer<TreeT, ActionT> = (
 ) => TreeT;
 
 export type Riduce<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}> = [
-  Reducer<TreeT, RiduceAction<TreeT>>,
+  Reducer<TreeT, RiduceAction<TreeT> | OrdinaryAction>,
   ActionsProxy<TreeT, TreeT, RiducerDictT>
 ];
 
@@ -27,9 +29,9 @@ function makeReducer<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}>(
 ): Reducer<TreeT, RiduceAction<TreeT>> {
   const reducer = (
     treeState: TreeT = initialState,
-    action: RiduceAction<TreeT>
+    action: RiduceAction<TreeT> | OrdinaryAction
   ): TreeT => {
-    if (typeof action !== "function" && !action.leaf) return treeState;
+    if (!isRiduceAction(action, treeState)) return treeState;
 
     if (isCallbackAction(action, treeState)) {
       const createdAction = action(treeState);

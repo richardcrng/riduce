@@ -6,6 +6,11 @@ export interface LeafData {
   bundled?: string[];
 }
 
+export interface OrdinaryAction {
+  type: string;
+  leaf?: unknown;
+}
+
 export interface Action<PayloadT = unknown> {
   type: string;
   leaf: LeafData;
@@ -24,6 +29,7 @@ export interface BundledAction extends ActionWithPayload<RiduceAction[]> {
 
 export interface CallbackAction<TreeT = unknown> {
   (treeState: TreeT): Action | BundledAction;
+  leaf?: unknown;
 }
 
 export type RiduceAction<TreeT = unknown> = Action | CallbackAction<TreeT>;
@@ -37,4 +43,13 @@ export function isCallbackAction<TreeT>(
   treeState: TreeT
 ): action is CallbackAction<TreeT> {
   return typeof action === "function" && !!action(treeState)?.leaf;
+}
+
+export function isRiduceAction<TreeT>(
+  action: RiduceAction<TreeT> | OrdinaryAction,
+  treeState: TreeT
+): action is RiduceAction<TreeT> {
+  return (
+    !!action.leaf || (typeof action === "function" && !!action(treeState)?.leaf)
+  );
 }
