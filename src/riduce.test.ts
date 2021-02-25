@@ -65,6 +65,17 @@ describe("Basic example", () => {
         },
       });
     });
+
+    test("Update using a function action", () => {
+      const result = reducer(initialState, (state) =>
+        actions.list.create.push(state.nested.counter)
+      );
+
+      expect(result).toStrictEqual({
+        ...initialState,
+        list: [...initialState.list, initialState.nested.counter],
+      });
+    });
   });
 
   describe("Nested actions", () => {
