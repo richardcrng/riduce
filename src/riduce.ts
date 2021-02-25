@@ -1,41 +1,56 @@
 import leafReducer from "./leafReducer";
 import { createActionsProxy } from "./proxy";
 import { ActionsProxy } from "./proxy/createActionsProxy";
-import { Action, RiducerDict, isBundledAction } from "./types";
+import {
+  Action,
+  RiducerDict,
+  isBundledAction,
+  CallbackAction,
+  isCallbackAction,
+  RiduceAction,
+  OrdinaryAction,
+  isRiduceAction,
+} from "./types";
 import updateState, { getState } from "./utils/update-state";
 
-export type Reducer<TreeT, ActionT extends Action> = (
+export type Reducer<TreeT, ActionT> = (
   treeState: TreeT | undefined,
   action: ActionT
 ) => TreeT;
 
 export type Riduce<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}> = [
-  Reducer<TreeT, Action>,
+  Reducer<TreeT, RiduceAction<TreeT> | OrdinaryAction>,
   ActionsProxy<TreeT, TreeT, RiducerDictT>
 ];
 
 function makeReducer<TreeT, RiducerDictT extends RiducerDict<TreeT> = {}>(
   initialState: TreeT,
   riducerDict: RiducerDictT
-): Reducer<TreeT, Action> {
-  const reducer = (treeState: TreeT = initialState, action: Action): TreeT => {
-    if (!action.leaf) return treeState;
+): Reducer<TreeT, RiduceAction<TreeT> | OrdinaryAction> {
+  const reducer = (
+    treeState: TreeT = initialState,
+    action: RiduceAction<TreeT> | OrdinaryAction
+  ): TreeT => {
+    if (!isRiduceAction(action, treeState)) return treeState;
 
-    if (isBundledAction(action)) {
+    if (isCallbackAction(action)) {
+      const createdAction = action(treeState);
+      return reducer(treeState, createdAction);
+    } else if (isBundledAction(action)) {
       return action.payload.reduce(reducer, treeState);
+    } else {
+      const prevLeafState = getState(treeState, action.leaf.path);
+
+      const newLeafState = leafReducer(
+        prevLeafState,
+        treeState,
+        action,
+        initialState,
+        riducerDict
+      );
+
+      return updateState(treeState, action.leaf.path, newLeafState);
     }
-
-    const prevLeafState = getState(treeState, action.leaf.path);
-
-    const newLeafState = leafReducer(
-      prevLeafState,
-      treeState,
-      action,
-      initialState,
-      riducerDict
-    );
-
-    return updateState(treeState, action.leaf.path, newLeafState);
   };
 
   return reducer;
