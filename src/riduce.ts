@@ -2,10 +2,8 @@ import leafReducer from "./leafReducer";
 import { createActionsProxy } from "./proxy";
 import { ActionsProxy } from "./proxy/createActionsProxy";
 import {
-  Action,
   RiducerDict,
   isBundledAction,
-  CallbackAction,
   isCallbackAction,
   RiduceAction,
   OrdinaryAction,
