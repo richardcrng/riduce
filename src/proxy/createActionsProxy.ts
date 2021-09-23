@@ -33,7 +33,9 @@ function createActionsProxy<
         ]);
       },
       getOwnPropertyDescriptor(target, property) {
-        return undefined
+        if (Object.prototype.hasOwnProperty.call(target, property)) {
+          return { configurable: true, enumerable: true }
+        }
       },
     }
   );
@@ -45,7 +47,6 @@ const propForPath = (prop: string | number | Symbol): string | number =>
   isFixedString(prop) ? parseInt(String(prop)) : String(prop);
 
 const isFixedString = (s: string | number | Symbol) => {
-  if (typeof s === 'symbol') return false;
   const n = Number(s);
   return !isNaN(n) && isFinite(n) && !/e/i.test(String(s));
 };
