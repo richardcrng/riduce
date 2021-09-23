@@ -1,6 +1,6 @@
 {
   "name": "riduce",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Get rid of your reducer boilerplate! Zero hassle state management that's typed, flexible and scalable.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
