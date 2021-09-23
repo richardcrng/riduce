@@ -33,9 +33,7 @@ function createActionsProxy<
         ]);
       },
       getOwnPropertyDescriptor(target, property) {
-        if (Object.prototype.hasOwnProperty.call(target, property)) {
-          return { configurable: true, enumerable: true }
-        }
+        return undefined
       },
     }
   );
