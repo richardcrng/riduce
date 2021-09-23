@@ -27,8 +27,6 @@ function createActionsProxy<
       get: (target, prop: Extract<keyof LeafT, string | number> | "create") => {
         if (prop === "create") return target.create;
 
-        if (typeof prop === 'symbol') return undefined
-
         return createActionsProxy(target[prop], treeState, riducerDict, [
           ...path,
           propForPath(prop),
@@ -44,6 +42,7 @@ const propForPath = (prop: string | number): string | number =>
   isFixedString(prop) ? parseInt(String(prop)) : String(prop);
 
 const isFixedString = (s: string | number) => {
+  // causes a bug in DevTools. idk how to fix. sorry.
   const n = Number(s);
   return !isNaN(n) && isFinite(n) && !/e/i.test(String(s));
 };
