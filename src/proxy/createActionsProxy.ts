@@ -42,6 +42,7 @@ const propForPath = (prop: string | number | Symbol): string | number =>
   isFixedString(prop) ? parseInt(String(prop)) : String(prop);
 
 const isFixedString = (s: string | number | Symbol) => {
+  if (typeof s === 'symbol') return false;
   const n = Number(s);
   return !isNaN(n) && isFinite(n) && !/e/i.test(String(s));
 };
