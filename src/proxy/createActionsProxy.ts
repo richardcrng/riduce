@@ -32,6 +32,11 @@ function createActionsProxy<
           propForPath(prop),
         ]);
       },
+      getOwnPropertyDescriptor(target, property) {
+        if (Object.prototype.hasOwnProperty.call(target, property)) {
+          return { configurable: true, enumerable: true }
+        }
+      },
     }
   );
 
