@@ -8,7 +8,7 @@ export type ActionsProxy<
 > = {
   create: CreateAPI<LeafT, TreeT, RiducerDictT>;
 } & {
-  [K in keyof LeafT]: ActionsProxy<LeafT[K], TreeT, RiducerDictT>;
+  [K in keyof Required<LeafT>]: ActionsProxy<LeafT[K], TreeT, RiducerDictT>;
 };
 
 function createActionsProxy<
