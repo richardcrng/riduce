@@ -29,6 +29,34 @@ import riduce from "../../../src"
   actions.nested.string
 }
 
+// @dts-jest:group Action keys are not possibly undefined but is sensitive to passing undefined
+{
+  interface State {
+    num: number;
+    nested?: {
+      deep?: boolean;
+    };
+  }
+
+  const initialState: State = {
+    num: 4,
+    nested: {
+      deep: true,
+    },
+  };
+
+  const [reducer, actions] = riduce(initialState);
+
+  // @dts-jest:pass
+  actions.nested.deep;
+
+  // @dts-jest:pass
+  actions.nested.deep.create.update(undefined);
+
+  // @dts-jest:fail
+  actions.num.create.update(undefined);
+}
+
 // @dts-jest:group Creator update is sensitive to the leaf type
 {
   const initialState = {

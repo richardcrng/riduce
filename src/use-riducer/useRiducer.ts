@@ -1,4 +1,4 @@
-import { useRef, useReducer, Dispatch, useMemo } from "react";
+import { useReducer, Dispatch, useMemo } from "react";
 import riduce, { Reducer } from "../riduce";
 import { Action, ActionsProxy, RiducerDict } from "../types";
 
