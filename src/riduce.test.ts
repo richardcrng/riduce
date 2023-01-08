@@ -35,6 +35,10 @@ describe("Basic example", () => {
     }
   });
 
+  test("JSON.stringify(actions) returns an ActionsProxy in string form", () => {
+    expect(JSON.stringify(actions)).toBe(`"[[object ActionsProxy]]"`);
+  });
+
   describe("Reducer and actions update state appropriately", () => {
     test("Updating a boolean", () => {
       const result = reducer(

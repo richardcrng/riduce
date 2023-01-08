@@ -25,6 +25,8 @@ function createActionsProxy<
     wrapWithCreate(leafState, treeState, riducerDict, path),
     {
       get: (target, prop: Extract<keyof LeafT, string | number> | "create") => {
+        if (prop === 'toJSON') return () => "[[object ActionsProxy]]"
+
         if (prop === "create") return target.create;
 
         return createActionsProxy(target[prop], treeState, riducerDict, [
