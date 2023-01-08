@@ -25,6 +25,8 @@ function createActionsProxy<
     wrapWithCreate(leafState, treeState, riducerDict, path),
     {
       get: (target, prop: Extract<keyof LeafT, string | number> | "create") => {
+        if (typeof prop === 'symbol') return target[prop]
+
         if (prop === 'toJSON') return () => "[[object ActionsProxy]]"
 
         if (prop === "create") return target.create;
@@ -40,8 +42,9 @@ function createActionsProxy<
   return (proxy as unknown) as ActionsProxy<LeafT, TreeT, RiducerDictT>;
 }
 
-const propForPath = (prop: PropertyKey): string | number =>
-  isFixedString(prop) ? parseInt(String(prop)) : String(prop);
+const propForPath = (prop: PropertyKey): string | number => {
+  return isFixedString(prop) ? parseInt(String(prop)) : String(prop);
+};
 
 const isFixedString = (s: PropertyKey) => {
   if (typeof s === 'symbol') return false
