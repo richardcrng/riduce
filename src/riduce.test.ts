@@ -39,11 +39,6 @@ describe("Basic example", () => {
     expect(JSON.stringify(actions)).toBe(`"[[object ActionsProxy]]"`);
   });
 
-  test("actions returns undefined for Symbol.iterator", () => {
-    // @ts-ignore
-    expect(actions[Symbol.iterator]).toBeUndefined();
-  });
-
   describe("Reducer and actions update state appropriately", () => {
     test("Updating a boolean", () => {
       const result = reducer(
