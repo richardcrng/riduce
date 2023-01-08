@@ -25,8 +25,6 @@ function createActionsProxy<
     wrapWithCreate(leafState, treeState, riducerDict, path),
     {
       get: (target, prop: Extract<keyof LeafT, string | number> | "create") => {
-        if (typeof prop === 'symbol') return target[prop]
-
         if (prop === 'toJSON') return () => "[[object ActionsProxy]]"
 
         if (prop === "create") return target.create;
@@ -47,8 +45,6 @@ const propForPath = (prop: PropertyKey): string | number => {
 };
 
 const isFixedString = (s: PropertyKey) => {
-  if (typeof s === 'symbol') return false
-
   // causes a bug in DevTools. idk how to fix. sorry.
   const n = Number(s);
   return !isNaN(n) && isFinite(n) && !/e/i.test(String(s));
